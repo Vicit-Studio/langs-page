@@ -1,8 +1,8 @@
 {
   "name": "langs-page",
-  "version": "1.2.2",
+  "version": "1.2.4",
   "description": "Tradutor de páginas da web usando a API do Google Translate",
-  "main": "src/index.js",
+  "main": "langsPage.min.js",
   "types": "src/@types/index.d.ts",
   "author": "Afio Vinícius",
   "license": "MIT",
@@ -20,14 +20,16 @@
     "google-translate"
   ],
   "dependencies": {
-    "jsdom": "^24.1.0"
+    "axios": "^1.7.2"
   },
   "devDependencies": {
-    "@ampproject/rollup-plugin-closure-compiler": "^0.27.0",
     "chai": "^4",
+    "jsdom": "^24.1.0",
     "mocha": "^10.6.0",
     "rollup": "^4.18.1",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0"
+    "@ampproject/rollup-plugin-closure-compiler": "^0.27.0",
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3"
   }
 }

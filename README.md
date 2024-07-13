@@ -25,7 +25,7 @@ _Ou caso prefira pode usar CDN:_
 _CDN_
 
 ```html
-<script src="https://unpkg.com/langs-page@1.2.2" defer></script>
+<script src="https://unpkg.com/langs-page@1.2.3" defer></script>
 ```
 
 ## Exemplos

@@ -1,3 +1,4 @@
+const axios = require("axios");
 const { getCode, isSupported } = require("./languages");
 
 async function translateText(text, from, to) {
@@ -22,21 +23,18 @@ async function translateText(text, from, to) {
   const params = new URLSearchParams(data);
 
   try {
-    const response = await fetch(url, {
+    const response = await axios.post(url, params, {
       method: "POST",
+      encoding: "UTF-8",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
         "User-Agent":
           "AndroidTranslate/5.3.0.RC02.130475354-53000263 5.1 phone TRANSLATE_OPM5_TEST_1",
       },
-      body: params,
+      crossDomain: true,
     });
 
-    if (!response.ok) {
-      throw new Error("Tradução falhou");
-    }
-
-    const responseData = await response.json();
+    const responseData = response.data;
 
     return responseData.sentences[0].trans;
   } catch (error) {
