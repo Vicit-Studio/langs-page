@@ -137,7 +137,6 @@ import {
   translateTextUsingServiceWorker,
   getSupportedLanguages,
 } from "./translateService";
-import { langs } from "langs-page";
 
 export default function App() {
   // Configurando idiomas padrão e de destino
