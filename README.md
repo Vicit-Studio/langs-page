@@ -20,6 +20,14 @@ _yarn_
   yarn add langs-page
 ```
 
+_Ou caso prefira pode usar CDN:_
+
+_CDN_
+
+```html
+<script src="https://unpkg.com/langs-page@1.2.2" defer></script>
+```
+
 ## Exemplos
 
 _Você pode usar as funções com [Service Worker](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API) para melhorar a performance e UX:_
@@ -91,7 +99,7 @@ async function initializeServiceWorker() {
   if ("serviceWorker" in navigator) {
     try {
       const registration = await navigator.serviceWorker.register(
-        "/service-worker.js"
+        "/translateService.js"
       );
       serviceWorkerRegistration = registration;
       serviceWorkerInitialized = true;
