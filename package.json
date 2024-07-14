@@ -1,6 +1,6 @@
 {
   "name": "langs-page",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Tradutor de páginas da web usando a API do Google Translate",
   "main": "langsPage.min.js",
   "types": "src/@types/index.d.ts",
