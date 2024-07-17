@@ -1,4 +1,3 @@
-const axios = require("axios");
 const { getCode, isSupported } = require("./languages");
 
 async function translateText(text, from, to) {
@@ -10,9 +9,9 @@ async function translateText(text, from, to) {
   }
 
   const url =
-    "https://translate.google.com/translate_a/single?client=at&dt=t&dt=ld&dt=qca&dt=rm&dt=bd&dj=1&hl=" +
+    "https://translate.google.com/translate_a/single?client=gtx&dt=t&dt=ld&dt=qca&dt=rm&dt=bd&dj=1&hl=" +
     to +
-    "&ie=UTF-8&oe=UTF-8&inputm=2&otf=2&iid=1dd3b944-fa62-4b55-b330-74909a99969e";
+    "&ie=UTF-8&oe=UTF-8&inputm=2&otf=2";
 
   const data = {
     sl: from,
@@ -23,18 +22,21 @@ async function translateText(text, from, to) {
   const params = new URLSearchParams(data);
 
   try {
-    const response = await axios.post(url, params, {
+    const response = await fetch(url, {
+      method: "POST",
+      mode: "no-cors",
       headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods":
-          "GET, POST, OPTIONS, PUT, PATCH, DELETE",
         "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
       },
+      body: params,
     });
 
-    const responseData = response.data;
+    const responseData = await response.json();
+    const translatedText = responseData.sentences
+      .map((sentence) => sentence.trans)
+      .join("");
 
-    return responseData.sentences[0].trans;
+    return translatedText;
   } catch (error) {
     throw new Error("Tradução falhou");
   }

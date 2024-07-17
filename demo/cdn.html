@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/langs-page@1.4.5"></script>
+    <title>Translate</title>
+  </head>
+  <body>
+    <h1>Traduzindo página completa</h1>
+    <h2>Com pacote via CDN</h2>
+
+    <select id="selectLanguage">
+      <option value="en">Inglês</option>
+      <option value="es">Espanhol</option>
+      <option value="auia">Idioma não suportado</option>
+    </select>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const selectLang = document.getElementById("selectLanguage");
+
+        const translated = async (toLang) => {
+          try {
+            const text = document.body.innerText;
+            const translateResult = await LangsPage.default.translateText(
+              text,
+              "pt",
+              toLang
+            );
+
+            text.innerText = translateResult;
+          } catch (error) {
+            console.log(error);
+          }
+        };
+
+        selectLang.addEventListener("change", (event) => {
+          translated(event.target.value);
+        });
+      });
+    </script>
+  </body>
+</html>
